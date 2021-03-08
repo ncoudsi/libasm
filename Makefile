@@ -4,10 +4,10 @@ ASM			=	nasm
 ASM_FLAGS	=	-f elf64
 
 CC			=	gcc
-C_FLAGS		=	-Wall -Wextra -Werror
+C_FLAGS		=	-Wall -Wextra -Werror -no-pie
 
 SRCS		=	srcs/ft_strlen.s srcs/ft_strcpy.s srcs/ft_strcmp.s srcs/ft_write.s \
-				srcs/ft_read.s
+				srcs/ft_read.s srcs/ft_strdup.s
 OBJS		=	$(SRCS:%.s=%.o)
 
 %.o:				%.s
