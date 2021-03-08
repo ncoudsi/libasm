@@ -40,12 +40,18 @@ int	main(void)
 	printf("[%ld]\n", ft_strlen(src));
 	printf("Test on empty string.\n");
 	printf("[%ld]\n", ft_strlen(""));
+	// FT_STRCPY
 	printf("\t===FT_STRCPY===\n");
+	// dest = "hello", src = "HELLO"
 	printf("Test with \"HELLO\" as src and \"hello\" as dest string.\n");
 	printf("[%s]\n", ft_strcpy(dest, src));
-	// Set dest with "test2" value, to do the new test.
-	dest = ft_strcpy(dest, "test2");
-	printf("Test with empty src and \"HELLO\" as dest string.\n");
+	// Set dest with "empty" value, to do the new test.
+	dest = ft_strcpy(dest, "empty");
+	// dest = "empty" src = ""
+	printf("Test with empty src and \"empty\" as dest string.\n");
 	printf("[%s]\n", ft_strcpy(dest, ""));
+	// dest = "" src = "HELLO"
+	printf("Test with src and empty dest string.\n");
+	printf("[%s]\n", ft_strcpy("", src));
 	return (0);
 }
