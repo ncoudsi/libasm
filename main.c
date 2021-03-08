@@ -2,11 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 size_t	ft_strlen(const char *str);
 char	*ft_strcpy(char *dest, char *src);
 int		ft_strcmp(const char *s1, const char *s2);
 size_t	ft_write(unsigned int fd, const char *buf, size_t count);
+size_t	ft_read(unsigned int fd, char *buf, size_t count);
 
 char	*ft_strdup(char *src)
 {
@@ -35,9 +39,13 @@ int	main(void)
 {
 	char	*src;
 	char	*dest;
+	char	*read_buf;
+	int		fd;
 
 	src = ft_strdup("HELLO");
 	dest = ft_strdup("hello");
+	read_buf = ft_strdup("          ");
+	fd = open("./main.c", O_RDONLY);
 	//	FT_STRLEN
 	printf("\t===FT_STRLEN===\n");
 	printf("==Test on src string.\n");
@@ -88,6 +96,16 @@ int	main(void)
 	printf("\t===FT_WRITE===\n");
 	ft_write(1, "HOME MADE\n", 10);
 	write(1, "OFFICIAL\n", 9);
+	//	FT_READ
+	printf("\t===FT_READ===\n");
+	printf("OFFICIAL RETURN  : [%ld]\n", read(fd, read_buf, 10));
+	printf("OFFICIAL BUF     : [%s] \n", read_buf);
+	//	--reset read_buf value, close the fd, and re-open it
+	read_buf = strcpy(read_buf, "          ");
+	close(fd);
+	fd = open("./main.c", O_RDONLY);
+	printf("HOME MADE RETURN : [%ld]\n", read(fd, read_buf, 10));
+	printf("HOME MADE BUF    : [%s] \n", read_buf);
 	free(src);
 	free(dest);
 	return (0);
