@@ -6,7 +6,7 @@ ASM_FLAGS	=	-f elf64
 CC			=	gcc
 C_FLAGS		=	-Wall -Wextra -Werror
 
-SRCS		=	srcs/ft_strlen.s
+SRCS		=	srcs/ft_strlen.s srcs/ft_strcpy.s
 OBJS		=	$(SRCS:%.s=%.o)
 
 %.o:				%.s
