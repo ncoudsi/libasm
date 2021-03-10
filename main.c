@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <errno.h>
 
 size_t	ft_strlen(const char *str);
 char	*ft_strcpy(char *dest, char *src);
@@ -103,14 +104,24 @@ int	main(void)
 	**	FT_READ
 	*/
 	printf("\t===FT_READ===\n");
+	printf("==Basic test\n");
 	printf("OFFICIAL RETURN  : [%ld]\n", read(fd, read_buf, 10));
 	printf("OFFICIAL BUF     : [%s] \n", read_buf);
 	//	--reset read_buf value, close the fd, and re-open it
 	read_buf = strcpy(read_buf, "          ");
 	close(fd);
 	fd = open("./main.c", O_RDONLY);
-	printf("HOME MADE RETURN : [%ld]\n", read(fd, read_buf, 10));
+	printf("HOME MADE RETURN : [%ld]\n", ft_read(fd, read_buf, 10));
 	printf("HOME MADE BUF    : [%s] \n", read_buf);
+	//	--test with error
+	fd = open("./not_a_file.lol", O_RDONLY);
+	printf("==Error test\n");
+	printf("OFFICIAL RETURN  : [%ld]\n", read(fd, read_buf, 10));
+	printf("ERRNO VALUE : [%d]\n", errno);
+	//	--reset errno value
+	errno = 0;
+	printf("HOME MADE RETURN : [%ld]\n", ft_read(fd, read_buf, 10));
+	printf("ERRNO VALUE : [%d]\n", errno);
 	/*
 	**	FT_STRDUP
 	*/

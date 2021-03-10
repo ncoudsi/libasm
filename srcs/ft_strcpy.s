@@ -2,7 +2,7 @@ section .text						;indicate that we are in the text section of memory, which co
 global ft_strcpy					;declaring ft_strcpy as global so it is accessible throughout all the file
 
 ft_strcpy :							;non-local label named ft_strcpy, valid in the whole file
-push		rbp						;put rbp on top of the stack
+push		rbp						;put rbp velu on top of the stack
 mov			rbp, rsp				;move rsp value in rbp (they bot are pointers so now the are pointing the same address)
 									;for more intels regarding stack management, see (in french only) https://beta.hackndo.com/stack-introduction/
 xor			rcx, rcx				;set rcx value to 0 (rcx being the count register, we use it here as itterrator)
