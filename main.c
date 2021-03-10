@@ -100,11 +100,32 @@ int	main(void)
 	printf("OFFICIAL  STRING :\n");
 	write_ret = write(1, "", 0);
 	printf("OFFICIAL  RETURN : [%ld]\n", write_ret);
+	//	--error test with NULL string
+	printf("==Error test with NULL string\n");
+	write_ret = write(1, NULL, 1);
+	printf("OFFICIAL  RETURN : [%ld]\n", write_ret);
+	printf("ERRNO VALUE : [%d]\n", errno);
+	errno = 0;
+	write_ret = ft_write(1, NULL, 1);
+	printf("HOME MADE RETURN : [%ld]\n", write_ret);
+	printf("ERRNO VALUE : [%d]\n", errno);
+	//	--error test with bad FD
+	fd = open("./not_a_file.lol", O_RDONLY);
+	printf("==Error test with wrong fd\n");
+	write_ret = write(fd, "TEST", 4);
+	printf("OFFICIAL  RETURN : [%ld]\n", write_ret);
+	printf("ERRNO VALUE : [%d]\n", errno);
+	errno = 0;
+	write_ret = ft_write(fd, "TEST", 4);
+	printf("HOME MADE RETURN : [%ld]\n", write_ret);
+	printf("ERRNO VALUE : [%d]\n", errno);
+	close(fd);
 	/*
 	**	FT_READ
 	*/
 	printf("\t===FT_READ===\n");
 	printf("==Basic test\n");
+	fd = open("./main.c", O_RDONLY);
 	printf("OFFICIAL RETURN  : [%ld]\n", read(fd, read_buf, 10));
 	printf("OFFICIAL BUF     : [%s] \n", read_buf);
 	//	--reset read_buf value, close the fd, and re-open it
@@ -115,7 +136,7 @@ int	main(void)
 	printf("HOME MADE BUF    : [%s] \n", read_buf);
 	//	--test with error
 	fd = open("./not_a_file.lol", O_RDONLY);
-	printf("==Error test\n");
+	printf("==Error test with wrond fd\n");
 	printf("OFFICIAL RETURN  : [%ld]\n", read(fd, read_buf, 10));
 	printf("ERRNO VALUE : [%d]\n", errno);
 	//	--reset errno value
