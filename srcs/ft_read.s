@@ -11,9 +11,7 @@ ret								;else, return rax value (being the return value of read)
 .error :						;local label named .error, valid only in ft_read scope
 neg			rax					;get the absolute value of rax since errno can store only positive values and rax value must be negative in error cases
 mov			rcx, rax			;move rax value in rcx
-push		rcx
 call		__errno_location	;call __errno_location function (returns the address of errno variable)
-pop			rcx
 mov			QWORD [rax], rcx	;move rcx value (absolute value of read return value) to errno (rax is the address of errno, so [rax] is errno itself)
 mov			rax, -1				;move -1 value to rax since we want to return the error code of the function
 ret								;return rax value
