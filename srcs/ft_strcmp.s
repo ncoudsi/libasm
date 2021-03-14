@@ -2,6 +2,9 @@ section .text						;indicate that we are in the text section of memory, which co
 global ft_strcmp					;declaring ft_strcpy as global so it is accessible throughout all the file
 
 ft_strcmp :							;non-local label named ft_strcmp, valid in the whole file
+push		rbp						;put rbp velu on top of the stack
+mov			rbp, rsp				;move rsp value in rbp (they bot are pointers so now the are pointing the same address)
+									;for more intels regarding stack management, see (in french only) https://beta.hackndo.com/stack-introduction/
 xor			rcx, rcx				;set rcx value to 0 (rcx being the count register, we use it here as itterrator)
 .end_string :						;local label named .end_string, valid only in ft_strcmp scope
 cmp			byte [rsi + rcx], 0		;compare [rsi + rcx] byte value to 0 (if (src[i] == '\0'))
@@ -18,4 +21,5 @@ jmp			.end_string				;jump to .end_string label
 mov			rax, [rdi + rcx]		;move [rdi + rcx] value to rax (rax = dest[i])
 mov			rdx, [rsi + rcx]		;move [rsi + rcx] value to rdx (rdx = src[i])
 sub			rax, rdx				;substract rxd to rax (rax -= rdx)
+pop			rbp						;move the value on top of the stack in rbp (and remove it from the top of the stack)
 ret									;return rax value

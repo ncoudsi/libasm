@@ -1,18 +1,4 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <errno.h>
-
-size_t	ft_strlen(const char *str);
-char	*ft_strcpy(char *dest, char *src);
-int		ft_strcmp(const char *s1, const char *s2);
-size_t	ft_write(unsigned int fd, const char *buf, size_t count);
-size_t	ft_read(unsigned int fd, char *buf, size_t count);
-char	*ft_strdup(const char *str);
+#include "./includes/libasm.h"
 
 int	main(void)
 {
@@ -28,6 +14,7 @@ int	main(void)
 	dest = ft_strdup("hello");
 	read_buf = ft_strdup("          ");
 	fd = open("./main.c", O_RDONLY);
+	printf("\n==No test are made on undefined behaviors\n\n");
 	/*
 	**	FT_STRLEN
 	*/
@@ -62,8 +49,6 @@ int	main(void)
 	//	--reset dest value
 	dest = strcpy(dest, "empty");
 	printf("HOME MADE : [%s]\n", ft_strcpy(dest, ""));
-	//	no test with dest smaller than src since it is undefined behaviors
-	printf("==No test with dest smaller than src since OFFICIAL one SEGV in this case.\n");
 	/*
 	**	FT_STRCMP
 	*/
