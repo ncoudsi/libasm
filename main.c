@@ -52,6 +52,7 @@ int	main(void)
 	/*
 	**	FT_STRCMP
 	*/
+	printf("TEST : [%d]\n", lol);
 	printf("\t===FT_STRCMP===\n");
 	//	both strings are equivalent
 	printf("==Test with equivalent strings\n");
@@ -59,12 +60,12 @@ int	main(void)
 	printf("HOME MADE : [%d]\n", ft_strcmp("AAA", "AAA"));
 	//	s1 > s2
 	printf("==Test with s1 > s2\n");
-	printf("OFFICIAL  : [%d]\n", strcmp("BAA", "AAA"));
-	printf("HOME MADE : [%d]\n", ft_strcmp("BAA", "AAA"));
+	printf("OFFICIAL  : [%d]\n", strcmp("CAA", "AAA"));
+	printf("HOME MADE : [%d]\n", ft_strcmp("CAA", "AAA"));
 	//	s1 < s2
 	printf("==Test with s1 < s2\n");
-	printf("OFFICIAL  : [%d]\n", strcmp("AAA", "BAA"));
-	printf("HOME MADE : [%d]\n", ft_strcmp("AAA", "BAA"));
+	printf("OFFICIAL  : [%d]\n", strcmp("AAA", "CAA"));
+	printf("HOME MADE : [%d]\n", ft_strcmp("AAA", "CAA"));
 	/*
 	**	FT_WRITE
 	*/

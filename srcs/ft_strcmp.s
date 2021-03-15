@@ -21,5 +21,19 @@ jmp			.end_string				;jump to .end_string label
 mov			rax, [rdi + rcx]		;move [rdi + rcx] value to rax (rax = dest[i])
 mov			rdx, [rsi + rcx]		;move [rsi + rcx] value to rdx (rdx = src[i])
 sub			rax, rdx				;substract rxd to rax (rax -= rdx)
+cmp			rax, 0					;compare rax value to 0
+jl			.negative				;if rax is lower than 0, jump to .negative local label
+je			.equal					;else if rax is equal to 0, jump to .equal local label
+jmp			.positive				;else jump to .positive local label
+.negative :							;local label named .negative, valid only in ft_strcmp scope
+mov			rax, -1					;move -1 to rax value
+pop			rbp						;move the value on top of the stack in rbp (and remove it from the top of the stack)
+ret									;return rax value
+.equal :							;local label named . equal, valid only in ft_strcmp scope
+mov			rax, 0					;move 0 to rax valu
+pop			rbp						;move the value on top of the stack in rbp (and remove it from the top of the stack)
+ret									;return rax value
+.positive :							;local label named .positive, valid only in ft_strcmp scope
+mov			rax, 1					;move 1 to rax value
 pop			rbp						;move the value on top of the stack in rbp (and remove it from the top of the stack)
 ret									;return rax value

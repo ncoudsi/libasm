@@ -10,11 +10,10 @@ push	rsi
 mov		rdi, 16
 call	malloc
 pop		rsi
-mov		[rax], rsi
 pop		rdi
+mov		qword [rax], rsi
 mov		rdx, [rdi]
 mov		[rax + 8], rdx
-mov		rcx, rax
-mov		rdx, rax
+mov		[rdi], rax
 pop		rbp
 ret
