@@ -31,8 +31,8 @@ int	main(void)
 	t_list	*node2;
 
 	data1 = ft_strdup("BBB");
-	data2 = ft_strdup("CCC");
-	new_data = ft_strdup("AAA");
+	data2 = ft_strdup("AAA");
+	new_data = ft_strdup("CCC");
 	node1 = (t_list *)malloc(sizeof(t_list));
 	node2 = (t_list *)malloc(sizeof(t_list));
 	node1->data = (void *)data1;
@@ -52,7 +52,7 @@ int	main(void)
 	printf("Third node data : [%s]\n", (char *)node1->next->next->data);
 	//	Print list new size.
 	printf("Nodes in list : [%d]\n", ft_list_size(node1));
-	ft_list_sort(&node1, ft_strcmp);
+	ft_list_sort(&node1, strcmp);
 	//	Print list nodes after sorting.
 	printf("==After sorting nodes : \n");
 	printf("First node data : [%s]\n", (char *)node1->data);
