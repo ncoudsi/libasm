@@ -18,10 +18,10 @@ jne			.return					;if check not verified, jump to .return label
 add			rcx, 1					;rcx++
 jmp			.end_string				;jump to .end_string label
 .return :							;local label named .return, valid only in ft_strcmp scope
-mov			rax, [rdi + rcx]		;move [rdi + rcx] value to rax (rax = dest[i])
-mov			rdx, [rsi + rcx]		;move [rsi + rcx] value to rdx (rdx = src[i])
-sub			rax, rdx				;substract rxd to rax (rax -= rdx)
-cmp			rax, 0					;compare rax value to 0
+mov			r8b, byte [rdi + rcx]	;move [rdi + rcx] value to r8b (r8b = dest[i])
+mov			r9b, byte [rsi + rcx]	;move [rsi + rcx] value to r9b (r9b = src[i])
+sub			r8b, r9b				;substract rxd to r8b (r8b -= r9b)
+cmp			r8b, 0					;compare rax value to 0
 jl			.negative				;if rax is lower than 0, jump to .negative local label
 je			.equal					;else if rax is equal to 0, jump to .equal local label
 jmp			.positive				;else jump to .positive local label
