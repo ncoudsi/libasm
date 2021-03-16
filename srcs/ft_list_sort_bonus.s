@@ -31,7 +31,7 @@ pop		rcx					;
 pop		rdx					;
 pop		rsi					;
 pop		rdi					;
-cmp		rax, 0				;
+cmp		dword	eax, 0		;
 jle		.next_node			;
 push	qword [rbx]			;
 push	qword [rcx]			;

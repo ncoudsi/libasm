@@ -13,6 +13,7 @@ int		comp(void *data1, void *data2)
 void	free_ftc(void *data)
 {
 	free(data);
+	data = NULL;
 }
 
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_ftc)(void *))
@@ -74,7 +75,7 @@ int	main(void)
 	printf("Third node data : [%s]\n", (char *)node1->next->next->data);
 	//	Print list new size.
 	printf("Nodes in list : [%d]\n", ft_list_size(node1));
-	ft_list_sort(&node1, ft_strcmp);
+	ft_list_sort(&node1, strcmp);
 	//	Print list nodes after sorting.
 	printf("==After sorting nodes : \n");
 	printf("First node data : [%s]\n", (char *)node1->data);
