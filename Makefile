@@ -4,14 +4,14 @@ ASM			=	nasm
 ASM_FLAGS	=	-f elf64
 
 CC			=	gcc
-C_FLAGS		=	-Wall -Wextra -Werror -no-pie
+C_FLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g3 -no-pie
 
 SRCS		=	srcs/ft_strlen.s srcs/ft_strcpy.s srcs/ft_strcmp.s srcs/ft_write.s \
 				srcs/ft_read.s srcs/ft_strdup.s
 OBJS		=	$(SRCS:%.s=%.o)
 
 SRCS_BONUS	=	srcs/ft_list_push_front_bonus.s	srcs/ft_list_size_bonus.s \
-				srcs/ft_list_sort_bonus.s
+				srcs/ft_list_sort_bonus.s 
 OBJS_BONUS	=	$(SRCS_BONUS:%.s=%.o)
 
 %.o:				%.s
