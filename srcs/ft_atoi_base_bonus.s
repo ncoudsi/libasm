@@ -19,16 +19,16 @@ pop		rdi
 pop		rsi
 cmp		eax, 0
 je		.return
-mov		rcx, 0
-mov		rdx, rsi
+mov		rcx, -1
+mov		rdx, rdi
 .white_spaces :
+add		rcx, 1
 push	rsi
 push	rdi
-movzx	rsi, byte [rdx + rcx]
+movzx	rdi, byte [rdx + rcx]
 call	is_whitespace
 pop		rdi
 pop		rsi
-add		rcx, 1
 cmp		eax, 1
 je		.white_spaces
 .plus :
@@ -44,10 +44,9 @@ mov		r13, rax
 add		rcx, 1
 jmp		.plus
 .fill_str :
-add		rcx, 1
 push	rdi
 push	rsi
-movzx	rdi, byte [rdi + rcx]
+movzx	rdi, byte [rdx + rcx]
 call	is_base
 pop		rsi
 pop		rdi
@@ -59,7 +58,7 @@ call	ft_strlen
 pop		rdi
 imul	r12
 push	rdi
-movzx	rdi, byte [rsi]
+movzx	rdi, byte [rdx + rcx]
 call	is_base
 add		r12, rax
 add		rcx, 1

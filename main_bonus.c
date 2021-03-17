@@ -79,7 +79,7 @@ int	is_base(char actual_char, char *base)
 // 	index = 0;
 // 	if (is_valid_base(base) == 0)
 // 		return (result);
-// 	while (ft_is_whitespace(str[index]) == 1)
+// 	while (is_whitespace(str[index]) == 1)
 // 		index++;
 // 	while (str[index] == '+' || str[index] == '-')
 // 	{
@@ -87,9 +87,9 @@ int	is_base(char actual_char, char *base)
 // 			sign *= -1;
 // 		index++;
 // 	}
-// 	while (ft_is_base(str[index], base) != -1)
+// 	while (is_base(str[index], base) != -1)
 // 	{
-// 		result = result * ft_strlen(base) + ft_is_base(str[index], base);
+// 		result = result * ft_strlen(base) + is_base(str[index], base);
 // 		index++; 
 // 	}
 // 	return (result * sign);
