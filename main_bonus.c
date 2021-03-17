@@ -16,31 +16,83 @@ void	free_ftc(void *data)
 	data = NULL;
 }
 
-// void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_ftc)(void *))
-// {
-// 	t_list	*actual_node;
-// 	t_list	*tmp;
+int	is_double_char(char actual_char, char *base, int char_index)
+{
+	while (base[char_index] != '\0')
+	{
+		char_index ++;
+		if (base[char_index] == actual_char)
+			return (1);
+	}
+	return (0);
+}
 
-// 	actual_node = *begin_list;
-// 	tmp = actual_node;
-// 	while (actual_node != NULL)
+int	is_valid_base(char *base)
+{
+	int		index;
+
+	index = 0;
+	if (base == NULL || ft_strlen(base) < 2)
+		return (0);
+	while (base[index] != '\0')
+	{
+		if (base[index] == '+' || base[index] == '-')
+			return (0);
+		else if (is_double_char(base[index], base, index) == 1)
+			return (0);
+		index++;
+	}
+	return (1);
+}
+
+int	is_whitespace(char actual_char)
+{
+	if (actual_char == '\t' || actual_char == '\v' || 
+	actual_char == '\n' || actual_char == '\r' || actual_char == '\f' || 
+	actual_char == ' ')
+		return (1);
+	return (0);
+}
+
+int	is_base(char actual_char, char *base)
+{
+	int	index;
+
+	index = 0;
+	while (base[index] != '\0')
+	{
+		if (base[index] == actual_char)
+			return (index);
+		index++;
+	}
+	return (-1);
+}
+
+// int		ft_atoi_base(char *str, char *base)
+// {
+// 	int	result;
+// 	int	sign;
+// 	int	index;
+
+// 	result = 0;
+// 	sign = 1;
+// 	index = 0;
+// 	if (is_valid_base(base) == 0)
+// 		return (result);
+// 	while (ft_is_whitespace(str[index]) == 1)
+// 		index++;
+// 	while (str[index] == '+' || str[index] == '-')
 // 	{
-// 		if (cmp(actual_node->data, data_ref) == 0)
-// 		{
-// 			free_ftc(actual_node->data);
-// 			tmp->next = actual_node->next;
-// 			tmp = actual_node;
-// 			actual_node = actual_node->next;
-// 			if (tmp == *begin_list)
-// 				*begin_list = actual_node;
-// 			free (tmp);
-// 		}
-// 		else
-// 		{
-// 			tmp = actual_node;
-// 			actual_node = actual_node->next;
-// 		}
+// 		if (str[index] == '-')
+// 			sign *= -1;
+// 		index++;
 // 	}
+// 	while (ft_is_base(str[index], base) != -1)
+// 	{
+// 		result = result * ft_strlen(base) + ft_is_base(str[index], base);
+// 		index++; 
+// 	}
+// 	return (result * sign);
 // }
 
 int	main(void)
@@ -87,6 +139,10 @@ int	main(void)
 	ft_list_remove_if(&node1, (void *)data_ref, comp, free_ftc);
 	printf("Only node data : [%s]\n", (char *)node1->data);
 	printf("Nodes in list : [%d]\n", ft_list_size(node1));
+	//	Print ft_atoi_base results.
+	printf("==FT_ATOI_BASE==\n");
+	printf("str = \"ff\" base = \"0123456789abcdef\" RETURN : [%d]\n", ft_atoi_base("ff", "0123456789abcdef"));
+	printf("str = \"    ++---1502ffPOIET\" base = \"0123456789abcdef\" RETURN : [%d]\n", ft_atoi_base("    ++---1502ffPOIET", "0123456789abcdef"));
 	//	Free all.
 	free(data1);
 	free(data2);
