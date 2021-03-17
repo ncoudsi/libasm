@@ -16,32 +16,32 @@ void	free_ftc(void *data)
 	data = NULL;
 }
 
-void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_ftc)(void *))
-{
-	t_list	*actual_node;
-	t_list	*tmp;
+// void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_ftc)(void *))
+// {
+// 	t_list	*actual_node;
+// 	t_list	*tmp;
 
-	actual_node = *begin_list;
-	tmp = actual_node;
-	while (actual_node != NULL)
-	{
-		if (cmp(actual_node->data, data_ref) == 0)
-		{
-			free_ftc(actual_node->data);
-			tmp->next = actual_node->next;
-			tmp = actual_node;
-			actual_node = actual_node->next;
-			if (tmp == *begin_list)
-				*begin_list = actual_node;
-			free (tmp);
-		}
-		else
-		{
-			tmp = actual_node;
-			actual_node = actual_node->next;
-		}
-	}
-}
+// 	actual_node = *begin_list;
+// 	tmp = actual_node;
+// 	while (actual_node != NULL)
+// 	{
+// 		if (cmp(actual_node->data, data_ref) == 0)
+// 		{
+// 			free_ftc(actual_node->data);
+// 			tmp->next = actual_node->next;
+// 			tmp = actual_node;
+// 			actual_node = actual_node->next;
+// 			if (tmp == *begin_list)
+// 				*begin_list = actual_node;
+// 			free (tmp);
+// 		}
+// 		else
+// 		{
+// 			tmp = actual_node;
+// 			actual_node = actual_node->next;
+// 		}
+// 	}
+// }
 
 int	main(void)
 {
@@ -75,7 +75,7 @@ int	main(void)
 	printf("Third node data : [%s]\n", (char *)node1->next->next->data);
 	//	Print list new size.
 	printf("Nodes in list : [%d]\n", ft_list_size(node1));
-	ft_list_sort(&node1, strcmp);
+	ft_list_sort(&node1, ft_strcmp);
 	//	Print list nodes after sorting.
 	printf("==After sorting nodes : \n");
 	printf("First node data : [%s]\n", (char *)node1->data);

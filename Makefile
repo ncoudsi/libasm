@@ -11,7 +11,7 @@ SRCS		=	srcs/ft_strlen.s srcs/ft_strcpy.s srcs/ft_strcmp.s srcs/ft_write.s \
 OBJS		=	$(SRCS:%.s=%.o)
 
 SRCS_BONUS	=	srcs/ft_list_push_front_bonus.s	srcs/ft_list_size_bonus.s \
-				srcs/ft_list_sort_bonus.s 
+				srcs/ft_list_sort_bonus.s srcs/ft_list_remove_if_bonus.s
 OBJS_BONUS	=	$(SRCS_BONUS:%.s=%.o)
 
 %.o:				%.s
