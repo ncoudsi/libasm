@@ -6,7 +6,7 @@ global ft_strdup					;declaring ft_strdup as global so it is accessible througho
 
 ft_strdup :							;non-local label named ft_strdup, valid in the whole file
 push		rbp						;put rbp value on top of the stack
-mov			rbp, rsp				;move rsp value in rbp (they bot are pointers so now the are pointing the same address)
+mov			rbp, rsp				;move rsp value in rbp (they both are pointers so now the are pointing the same address)
 									;for more intels regarding stack management, see (in french only) https://beta.hackndo.com/stack-introduction/
 mov			rdx, rdi				;move rdi value in rdx
 push		rdx						;push rdx value on top of the stack
