@@ -112,13 +112,13 @@ int	main(void)
 	printf("==Basic test\n");
 	fd = open("./main.c", O_RDONLY);
 	printf("OFFICIAL RETURN  : [%ld]\n", read(fd, read_buf, 10));
-	printf("OFFICIAL BUF     : [%s] \n", read_buf);
+	printf("OFFICIAL BUFFER     : [%s] \n", read_buf);
 	//	--reset read_buf value, close the fd, and re-open it
 	read_buf = strcpy(read_buf, "          ");
 	close(fd);
 	fd = open("./main.c", O_RDONLY);
 	printf("HOME MADE RETURN : [%ld]\n", ft_read(fd, read_buf, 10));
-	printf("HOME MADE BUF    : [%s] \n", read_buf);
+	printf("HOME MADE BUFFER    : [%s] \n", read_buf);
 	//	--test with error
 	fd = open("./not_a_file.lol", O_RDONLY);
 	printf("==Error test with wrond fd\n");

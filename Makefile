@@ -34,10 +34,10 @@ exec_bonus:			bonus
 				@$(CC) $(C_FLAGS) main_bonus.c $(NAME) && ./a.out
 
 clean:
-				rm -rf $(OBJS) $(OBJS_BONUS)
+				@rm -rf $(OBJS) $(OBJS_BONUS)
 
 fclean:				clean
-				rm $(NAME)
+				@rm -f $(NAME)
 
 re:					fclean all
 
