@@ -16,7 +16,7 @@ SRCS_BONUS	=	srcs/ft_list_push_front_bonus.s	srcs/ft_list_size_bonus.s \
 OBJS_BONUS	=	$(SRCS_BONUS:%.s=%.o)
 
 %.o:				%.s
-				$(ASM) $(ASM_FLAGS) $<
+				@$(ASM) $(ASM_FLAGS) $<
 
 all:
 				@make $(NAME)
